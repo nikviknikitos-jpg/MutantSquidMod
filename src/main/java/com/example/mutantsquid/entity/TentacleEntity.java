@@ -81,7 +81,7 @@ public class TentacleEntity extends Entity {
         if (!(getWorld() instanceof ServerWorld sw)) return;
         Box box = new Box(getX() - 10, getY() - 3, getZ() - 10, getX() + 10, getY() + 6, getZ() + 10);
         List<MobEntity> mobs = sw.getEntitiesByClass(MobEntity.class, box,
-                e -> e.isAlive() && !(e instanceof PlayerEntity) && !(e instanceof TentacleEntity)
+                e -> e.isAlive() && !((Object)e instanceof PlayerEntity) && !((Object)e instanceof TentacleEntity)
                         && !(e instanceof MutantSquidEntity));
         Optional<MobEntity> pick = mobs.stream().findFirst();
         if (pick.isPresent()) {
